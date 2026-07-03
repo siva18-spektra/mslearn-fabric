@@ -62,8 +62,8 @@ Before working with data in Fabric, create a workspace with the Fabric trial ena
    ![](./Images/fabric-image4.png)
    
    > **Note**: If you receive the **Welcome to the Fabric view** pop-up, click **Cancel** to skip the tour.
-
-      ![](./Images/fabric-image5.png)
+   >
+   >   ![](./Images/fabric-image5.png)
 
 1. On the **Fabric** home page, click the **Fabric** icon from the left pane to open the Fabric experience.
 
@@ -79,11 +79,11 @@ Before working with data in Fabric, create a workspace with the Fabric trial ena
 
    >**Note:** The Fabric trial is enabled to ensure that your account has access to Microsoft Fabric features and experiences. However, the hands-on lab resources and workloads in this guide are configured to use the F2 Fabric capacity provided for the lab environment. The trial activation is only to enable Fabric access for your user account and does not replace the dedicated F2 capacity used throughout the lab.
 
-1. On the **Activate your 60-day free Fabric trial capacity** window, click **Activate** to continue with the default region.
+1. On the **Start 60-day free Pro trial** window, click **Start trial** to activate your free 60-day Pro trial.
 
    ![Start-trial](<./Images/fb_ex1_5.png>)
 
-1. Once your trial capacity is ready, you receive a confirmation message. Select **OK** to begin working in Fabric.
+1. On the **All paid features of Power BI are yours for 60 days** confirmation window, click **Got it** to continue.
 
    ![](./Images/L1T1S9.png)
 
@@ -112,6 +112,14 @@ Before working with data in Fabric, create a workspace with the Fabric trial ena
 1. When your new workspace opens, it should be empty.
 
    ![Screenshot of an empty workspace in Power BI.](<./Images/L1T1S10.png>)
+
+1. In the workspace, click the **Manage access** option from the upper-right corner to open the **Manage access** pane and click on **+ Add people or groups**.
+
+   ![Manage Access](<./Images/L1T1S11.png>)
+
+1. In the **Add people** pane, enter **https://aec-svc/** **(1)**, ensure the permission is set to **Admin (2)** by using dropdown, and then click **Add (3)**.
+
+   ![Add Service Principal](<./Images/L1T1S12.png>)
 
 > **Congratulations** on completing the task! Now, it's time to validate it. Here are the steps:
 >
@@ -193,6 +201,8 @@ In many scenarios, the data you need to work with in your lakehouse may be store
    ![](./Images/L1T4S1.png)
 
 1. View the available data source types for shortcuts. Then close the **New shortcut** dialog box without creating a shortcut.
+
+   ![](./Images/L1T4S2.png)
 
 ## Task 5: Load file data into a table
 
