@@ -53,7 +53,9 @@ In this task, you will create a Spark notebook that transforms the raw CSV data 
     
     ![](<./Images/img4.png>)
 
-1. First, upload the sample data so you can test the notebook. In the **Explorer** pane on the left, click the ellipses **(...) (1)** next to the **Files** folder, then select **New subfolder (2)**. Name it **raw** and click **Create**.
+    > **Note**: identify the lakehouse by using the icon of the lakehouse there are more lakehouse select that matches the lakehouse icon
+
+1. First, upload the sample data so you can test the notebook. In the **Explorer** pane on the left, click the ellipses **(...) (1)** next to the **Files** folder, then select **New subfolder (2)**. Name it **raw (3)** and click **Create (4)** .
    
     ![](<./Images/img5.png>)
 
@@ -63,11 +65,11 @@ In this task, you will create a Spark notebook that transforms the raw CSV data 
 
    ![](<./Images/img7.png>)
 
-1. On the Upload files dialog, click the folder icon on the right to browse, go to path **C:\LabFiles\dp-data-main** and select the **prodcuts.csv (1)** file from your local or lab machine and click on **Open (2)**
+1. On the Upload files dialog, click the folder icon on the right to **browse**, go to path **C:\LabFiles\dp-data-main** and select the **prodcuts.csv (1)** file from your local or lab machine and click on **Open (2)**
 
    ![](<./Images/imgupload.png>)
 
-      ![](<./Images/img999.png>)
+   ![](<./Images/img999.png>)
 
 1. On the Upload files dialog, after selecting the **prodcuts.csv** file, click **Upload (1)** to upload the file into the raw folder.
 
@@ -119,14 +121,13 @@ In this task, you will create a Spark notebook that transforms the raw CSV data 
    print(f"Staged row count: {df_clean.count()}")
    df_clean.show(5)
    ```
-
    ![](<./Images/img9.png>)
 
 1. In the **Explorer** pane, Click it on the **(...) (1)** of the onelake and click on  the **Refresh all sources (2)**. Expand **Tables** under the **dbo** verify that the **stg_products** table now appears.
 
-    ![](<./Images/img12.png>)
+   ![](<./Images/img12.png>)
 
-    ![](<./Images/img11.png>)
+   ![](<./Images/img11.png>)
 
 <validation step="e2e302bd-e8e0-45c5-9a8d-4c1d5f332079" />
 
@@ -135,14 +136,13 @@ In this task, you will create a Spark notebook that transforms the raw CSV data 
 > - If not, carefully read the error message and retry the step, following the instructions in the lab guide.
 > - If you need any assistance, please contact us at cloudlabs-support@spektrasystems.com. We are available 24/7 to help you out.
 
-
 ## Task 2: Create a Data Pipeline
 
 In this task, you will create a new Data Pipeline that will orchestrate the entire data flow - from ingestion to transformation to loading.
 
 1. In the hub menu bar on the left, click on your workspace **Workspace-<inject key="DeploymentID" enableCopy="false"/> (1)**.
 
-1. Click **+ New item** **(1)** at the top of the workspace.
+1. Click **+ New item** **(2)** at the top of the workspace.
 
    ![](<./Images/E1T2S1.png>)
 
@@ -240,9 +240,9 @@ In this task, you will add a **Notebook** activity after the Copy activity. This
 
 In this task, you will add a **Script** activity that uses a cross-database query to read the Delta table from the Lakehouse and insert it into a table in the Data Warehouse - all without moving files.
 
-1. First, you need to create the target table in the Warehouse. Open a **new browser tab** and navigate to your workspace **Workspace-<inject key="DeploymentID" enableCopy="false"/>**.
+1. First, you need to create the target table in the Warehouse. Open a **new browser tab** and navigate to your workspace **Workspace-<inject key="DeploymentID" enableCopy="false"/>** **(1)**.
 
-1. Select the **myDataWarehouse** **(1)** warehouse to open it.
+1. Select the **myDataWarehouse** **(2)** warehouse to open it.
 
    ![](<./Images/L2T4S1.png>)
 
@@ -250,7 +250,7 @@ In this task, you will add a **Script** activity that uses a cross-database quer
 
    ![](<./Images/L1T62.png>)
 
-1. Paste the following SQL and click **Run** to create the target table:
+1. Paste the following SQL and click **Run (2)** to create the target table:
 
    ```sql
    CREATE TABLE dbo.DimProductStaging
@@ -263,7 +263,6 @@ In this task, you will add a **Script** activity that uses a cross-database quer
    );
    GO
    ```
-
    ![](<./Images/img30.png>)
 
 1. Verify that the table **DimProductStaging** appears in the **Explorer** pane under **dbo > Tables**. Click **Refresh** if needed.
@@ -286,7 +285,7 @@ In this task, you will add a **Script** activity that uses a cross-database quer
 
 1. Switch back to the browser tab with your **pl_ingest_and_load** pipeline.
 
-1. From the **Activities** toolbar, select **Script** **(1)** to add a Script activity to the pipeline canvas.
+1. From the **Activities (1)** toolbar, select **Script** **(2)** to add a Script activity to the pipeline canvas.
 
    ![](<./Images/img33.png>)
 
@@ -364,7 +363,7 @@ In this task, you will validate, run, and monitor the pipeline to ensure all thr
    SELECT COUNT(*) AS TotalProducts FROM dbo.DimProductStaging;
    GO
    ```
-    ![](<./Images/img42.png>)
+     ![](<./Images/img42.png>)
 
     >**Note:** You should see the Total products number that were ingested from the CSV, transformed in the notebook, and loaded via the cross-database query.
 
@@ -373,7 +372,7 @@ In this task, you will validate, run, and monitor the pipeline to ensure all thr
    GO
    ```
 
-   ![](<./Images/img43.png>)
+     ![](<./Images/img43.png>)
 
    >**Note:** You should see the **top 10 product rows** that were ingested from the CSV, transformed in the notebook, and loaded via the cross-database query.
 
@@ -385,17 +384,17 @@ In this task, you will validate, run, and monitor the pipeline to ensure all thr
 
    - Click **Schedule** on the toolbar.
 
-        ![](<./Images/img44.png>)
+      ![](<./Images/img44.png>)
    
    - On the next screen, click on **+ Add schedule**.
 
-        ![](<./Images/img45.png>)
+      ![](<./Images/img45.png>)
 
    - Set the **Repeat** to **Daily** and choose a **Start date & time and End date & time.**
 
    - Click **Save**.
 
-        ![](<./Images/img46.png>)
+      ![](<./Images/img46.png>)
 
 ## 📝 Summary
 

@@ -364,9 +364,9 @@ You can easily visualize the data in either a single query or in your data wareh
 
    ![](./Images/L2T5S17.png)
 
-1. To share your report with your team or external users, click the Share button located in the top-right corner of the report. Enter the recipient's name or email address, configure the required access permissions, and then click Grant Access to share the report.
+1. To share your report with your team or external users, click the **Share** button located in the top-right corner of the report. Enter the recipient's name or email address, configure the required access permissions, and then click Grant Access to share the report.
  
-   ![](./Images/share_button.png)
+   ![](./Images/share_button-1.png)
 
 1. In the menu hub on the left, navigate back to the workspace. Notice that you now have three items saved in your workspace: your data warehouse, its default dataset, and the report you created.
 
