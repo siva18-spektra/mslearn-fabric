@@ -53,7 +53,7 @@ In this task, you will create a Spark notebook that transforms the raw CSV data 
     
     ![](<./Images/img4.png>)
 
-    > **Note**: identify the lakehouse by using the icon of the lakehouse there are more lakehouse select that matches the lakehouse icon
+    > **Note**: Identify the lakehouse by using the icon of the lakehouse there are more lakehouse select that matches the lakehouse icon
 
 1. First, upload the sample data so you can test the notebook. In the **Explorer** pane on the left, click the ellipses **(...) (1)** next to the **Files** folder, then select **New subfolder (2)**. Name it **raw (3)** and click **Create (4)** .
    
@@ -77,7 +77,7 @@ In this task, you will create a Spark notebook that transforms the raw CSV data 
 
 1. Once the upload is complete and the status shows **Completed**, click the **Close** icon at the top right to exit the **Upload files** dialog.
 
-      ![](<./Images/img1111.png>)
+   ![](<./Images/img1111.png>)
 
 1. In the first cell, paste the following PySpark code and click the **&#9655; Run (1)** button to execute it:
 
@@ -148,7 +148,7 @@ In this task, you will create a new Data Pipeline that will orchestrate the enti
 
 1. On the **New item** page, search for **Pipeline** **(1)** in the search bar and select **Pipeline** **(2)**.
 
-    ![](<./Images/img13.png>)
+   ![](<./Images/img13.png>)
 
 1. In the **New pipeline** popup, enter **pl_ingest_and_load** **(1)** as the pipeline name, then click **Create** **(2)**.
 
@@ -177,21 +177,21 @@ In this task, you will add a **Copy Data** activity to the pipeline. This activi
 1. In the **Choose a data source to get started** dialog:
 
    - Search **http** **(1)** as the data source type and select **HTTP (2)**
-    
-        ![](<./Images/img19.png>)
+
+      ![](<./Images/img19.png>)
 
    - Under the connection settings in the **URL field** **(1)**, enter the following and click on **Connect (2)**:
 
      ```
      https://raw.githubusercontent.com/MicrosoftLearning/dp-data/main/products.csv
      ```
-     
      ![](<./Images/img20.png>)
 
    - Set **Authentication kind** to **Anonymous** **(3)**.
+     
    - Click **Create** **(4)**.
-
-        ![](<./Images/img22.png>)
+     
+      ![](<./Images/img22.png>)
 
 1. Back on the **Source** tab, under **File format**, confirm the format is set to **DelimitedText**.
 
@@ -202,15 +202,15 @@ In this task, you will add a **Copy Data** activity to the pipeline. This activi
    - Under **Connection** dropdown click on **Browse all**.
    - On the next screen scroll down to **OneLake Catalog**, select **Lakehouse**.
    - Select **Lakehouse_<inject key="DeploymentID" enableCopy="false"/>** as the Lakehouse.
-        
-        ![](<./Images/img23.png>)
+
+     ![](<./Images/img23.png>)
     
    - Set **Root folder** to **Files (1)**.
    - In the **File path** field, enter the folder path **raw** **(2)** and file name **products.csv** **(2)**.
+     
+     ![](<./Images/img24.png>)
 
-        ![](<./Images/img24.png>)
-
-        > **Note**: The pipeline stores the file in Files/raw/products.csv within the Lakehouse and replaces any existing file during each run, ensuring the latest source data is always used.
+     > **Note**: The pipeline stores the file in Files/raw/products.csv within the Lakehouse and replaces any existing file during each run, ensuring the latest source data is always used.
 
 ## Task 4: Add a Notebook Activity to transform data
 
@@ -228,7 +228,7 @@ In this task, you will add a **Notebook** activity after the Copy activity. This
 
    - Under **Notebook**, click the dropdown and select **nb_transform_products** **(2)**.
 
-        ![](<./Images/img28.png>)
+     ![](<./Images/img28.png>)
 
 1. Now connect the two activities. Hover over the right edge of the **Copy Products CSV** activity until the green checkmark (&#10004;) connector appears. Drag it to the **Transform to Delta** activity.
 
@@ -275,9 +275,7 @@ In this task, you will add a **Script** activity that uses a cross-database quer
    SELECT TOP 10 *
    FROM Lakehouse_.dbo.stg_products;
    ```
-   >**Note:** Please replace the Lakehouse_ with the actual value of your Lakehouse.
-
-   > **Use:** Lakehouse_<inject key="DeploymentID" enableCopy="false"/>.dbo.stg_products
+   >**Note:** Please replace the Lakehouse_ with the actual value of your Lakehouse i.e. Lakehouse_<inject key="DeploymentID" enableCopy="false"/>.dbo.stg_products
 
    ![](<./Images/img32.png>)
 
@@ -313,10 +311,8 @@ In this task, you will add a **Script** activity that uses a cross-database quer
    FROM Lakehouse_.dbo.stg_products;
    ```
    
-    >**Note:** Please replace the Lakehouse_ with the actual value of your Lakehouse. 
+   >**Note:** Please replace the Lakehouse_ with the actual value of your Lakehouse i.e **Lakehouse_<inject key="DeploymentID" enableCopy="false"/>.dbo.stg_products**
     
-    >Example: **Lakehouse_<inject key="DeploymentID" enableCopy="false"/>.dbo.stg_products**
-
    ![](<./Images/img35.png>)
 
 1. Connect the **Transform to Delta** activity to the **Load to Warehouse** activity using the green (on success) connector, just as you did in Task 4.
@@ -334,7 +330,7 @@ In this task, you will add a **Script** activity that uses a cross-database quer
 In this task, you will validate, run, and monitor the pipeline to ensure all three activities complete successfully.
 
 1. Switch to **Home (1)** On the pipeline toolbar, click on **Validate** **(2)**. You can check for configuration errors or validation errors on the **Pipeline Validation Pane (3)**.
-
+   
    ![](<./Images/img38.png>)
 
 1. Once validation passes, click **Run** to execute the pipeline.
@@ -351,7 +347,7 @@ In this task, you will validate, run, and monitor the pipeline to ensure all thr
    - **Transform to Delta** - should show **Succeeded** (&#10004;)
    - **Load to Warehouse** - should show **Succeeded** (&#10004;)
 
-        ![](<./Images/img41.png>)
+     ![](<./Images/img41.png>)
 
    > **Note**: The pipeline run typically completes in 2-4 minutes. If an activity fails, click on it to see the error details and troubleshoot.
 
@@ -363,16 +359,15 @@ In this task, you will validate, run, and monitor the pipeline to ensure all thr
    SELECT COUNT(*) AS TotalProducts FROM dbo.DimProductStaging;
    GO
    ```
-     ![](<./Images/img42.png>)
+   ![](<./Images/img42.png>)
 
-    >**Note:** You should see the Total products number that were ingested from the CSV, transformed in the notebook, and loaded via the cross-database query.
+   >**Note:** You should see the Total products number that were ingested from the CSV, transformed in the notebook, and loaded via the cross-database query.
 
    ```sql
    SELECT TOP 10 * FROM dbo.DimProductStaging ORDER BY Category, ProductName;
    GO
    ```
-
-     ![](<./Images/img43.png>)
+   ![](<./Images/img43.png>)
 
    >**Note:** You should see the **top 10 product rows** that were ingested from the CSV, transformed in the notebook, and loaded via the cross-database query.
 
@@ -380,21 +375,21 @@ In this task, you will validate, run, and monitor the pipeline to ensure all thr
 
    - Go back to the pipeline **pl_ingest_and_load**.
 
-      ![](<./Images/imgpipe.png>)
+     ![](<./Images/imgpipe.png>)
 
    - Click **Schedule** on the toolbar.
 
-      ![](<./Images/img44.png>)
+     ![](<./Images/img44.png>)
    
    - On the next screen, click on **+ Add schedule**.
 
-      ![](<./Images/img45.png>)
+     ![](<./Images/img45.png>)
 
    - Set the **Repeat** to **Daily** and choose a **Start date & time and End date & time.**
 
    - Click **Save**.
 
-      ![](<./Images/img46.png>)
+     ![](<./Images/img46.png>)
 
 ## 📝 Summary
 
